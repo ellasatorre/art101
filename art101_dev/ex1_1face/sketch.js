@@ -2,20 +2,59 @@
 
 let lxo = 0;
 let lyo = 0;
-
+let xc = 0;
+let s = 2;
 
 function setup() {
  // put setup code here
  createCanvas(600,600);
   noStroke();
   rectMode(CENTER);
-  frameRate(10);
+  frameRate(12);
 }
-
 
 function draw() {
 background(115, 204, 255);
-noStroke();``
+noStroke();
+
+//clouds
+fill(255);
+ellipse(xc + 100, 100, 190, 80);
+ellipse(xc - 150, 100, 130, 50);
+ellipse(xc + 300, 150, 180, 60);
+ellipse(xc - 50, 180, 180, 60);
+ellipse(xc + 200, 50, 190, 70);
+ellipse(xc - 200, 200, 190, 70);
+
+      if (xc > 600) {
+      s = -0.5;
+  }
+  
+  if (xc < 10) {
+      s = 0.5;
+  }
+  
+  xc += s;
+
+
+//hedge
+fill(25, 54, 13);
+rect(300, 350, 600, 375);
+
+
+//flowers 
+for (let x = 0; x < 650; x += 65){
+  for (let y = 200; y < 650; y += 65){
+    push();
+    translate(x, y);			
+    drawFlower();
+    pop();
+  }	
+}
+
+
+
+
 fill(41, 143, 77);
 rect(300, 550, 600, 150);
 
@@ -79,4 +118,42 @@ if (lyo > -70) {
   lyo += 10
 }
 
+
+// push();
+// translate(300, 300);
+// let angle = frameCount * .1;
+// rotate(angle);
+
+// // petals
+// fill(random(255), random(255),random(255));
+// noStroke();
+
+// ellipse(0 ,0 , 50, 25);
+// ellipse(0 ,0 , 25, 50);
+
+// //flower center
+// fill(247, 230, 42);
+// stroke(230, 149, 44);
+// ellipse(0, 0, 20, 20);
+// pop();
+
+}
+
+
+//flowers
+function drawFlower() {
+  let angle = frameCount * .2;
+  rotate(angle);
+  
+  // petals
+  fill(random(255), random(200),random(255));
+  noStroke();
+  
+  ellipse(0 ,0 , 50, 25);
+  ellipse(0 ,0 , 25, 50);
+  
+  //flower center
+  fill(247, 230, 42);
+  stroke(230, 149, 44);
+  ellipse(0, 0, 20, 20);
 }
