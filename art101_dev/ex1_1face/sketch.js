@@ -7,43 +7,17 @@ let lyo = 0;
 function setup() {
  // put setup code here
  createCanvas(600,600);
-  background(0);
   noStroke();
   rectMode(CENTER);
+  frameRate(10);
 }
 
 
 function draw() {
-  
-  noStroke();
-
-  // let r = random(30);
-  // let m = mouseX;
-  // console.log(m + " " + r);
-  // if (m < width/2)  {
-  //   background(m);
-  //   ellipse(m, height/2, r * 5, r * 2);
-  // } else {
-  //   background(width -m );
-  //   rect(m, height/2, r * 2, r * 5);
-  // }
-
-  // for (let i=0; i < height; i+=20) {
-  //   fill(20 + i,20,100);
-  //   rect(0, i, width, 10);
-  //   fill(100 + i, 100, 250);
-  //   rect(i, 0, 10, height);
-  //   console.log(i);
-  // }
-
-  // for (let i = 0; i < 400; i += 20) {
-  //   for (let j = 0; j < 400; j += 20) {
-  //     rand = random(255);
-  //     fill(rand);
-  //     rect( i+5, j+5, 10, 10 );
-  //     console.log("this has a greyscale value of" + rand);
-  //   }
-  // }
+background(115, 204, 255);
+noStroke();``
+fill(41, 143, 77);
+rect(300, 550, 600, 150);
 
   strokeWeight(3);
   //legs
@@ -99,38 +73,10 @@ function draw() {
   fill(186, 44, 0);
   triangle(300 + lxo, 90 + lyo, 215 + lxo, 250 + lyo, 385 + lxo, 250 + lyo);
 
-
-
-  // if ( mouseIsPressed) {
-
-  //   if ( mouseX < 100) {
-    
-  //     if ( mouseY < 100) {
-  //       fill(255);
-  //     ellipse(width/4, height/4, 60, 60);
-  //     }
-    
-  //   }
-    
-  //   if ( mouseX > 400) {
-    
-  //     if ( mouseY > 400) {
-  //       fill(200,0,100);
-  //     rect(width/1.5, height/1.5, 80, 80,10);
-  //     }
-  //   }
-    
-  //   }
-    
-    
-  //   if ( mouseX > 200 &&  mouseX < 300 ) {
-  //     if ( mouseY > 200 &&  mouseY < 300 ) {
-  //        fill(255,0,0,90);
-  //        triangle(200,240,240,180,270,240);
-  //     }
-  //   }
-
-
-
+if (lyo > -70) {
+  lyo += -10;
+} else {
+  lyo += 10
+}
 
 }
