@@ -46,8 +46,8 @@ translate(-200, -130);
 
 
   //body
-  stroke(11, 26, 5)
-  fill(25, 54, 13)
+  stroke(26, 61, 19);
+  fill(55, 117, 42);
   rect(300+ lxo, 450 +lyo, 250, 215, 35);
 
   //face
@@ -87,8 +87,8 @@ translate(-200, -130);
 
   //hat
   strokeWeight(3);
-  stroke(11, 26, 5);
-  fill(25, 54, 13);
+  stroke(26, 61, 19);
+  fill(55, 117, 42);
   triangle(300 + lxo, 90 + lyo, 215 + lxo, 250 + lyo, 385 + lxo, 250 + lyo);
 pop();
 }
@@ -166,6 +166,7 @@ for (let x = 0; x < 650; x += 65){
   }	
 }
 
+//jumping gnomes
 if (lyo > -70) {
   lyo += -10;
 } else {
@@ -250,7 +251,17 @@ rect(340 + lxo, 300 + lyo, 45, 35, 2, 2, 30, 30);
 pop();
   }
 }
+// party lights if sunglasses are clicked
+if (mouseIsPressed){
+  if(mouseX > 200 && mouseX < 350){
+    if (mouseY > 200 && mouseY < 350) {
+  noStroke();
+  fill(random(255), random(255), random(255), 90);
+  rect(300, 300, innerWidth, height);
 
+}
+}
+}
 
 }
 
