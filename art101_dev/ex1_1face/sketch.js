@@ -39,7 +39,7 @@ ellipse(xc - 200, 200, 190, 70);
 //background gnome 1
 if (mouseX < 300){
   if(mouseY < 200){
-
+    
 console.log("O Gnomeo, Gnomeo, wherefore art thou Gnomeo?")
 push();
 translate(-200, -130);
@@ -166,9 +166,23 @@ for (let x = 0; x < 650; x += 65){
   }	
 }
 
+if (lyo > -70) {
+  lyo += -10;
+} else {
+  lyo += 10
+}
 
+//grass
 fill(41, 143, 77);
 rect(300, 550, 600, 150);
+
+//flower appears 
+if (mouseY > 200){
+  push();
+  translate(mouseX, mouseY);
+  drawFlower();
+  pop();
+  }
 
   strokeWeight(3);
   //legs
@@ -178,8 +192,8 @@ rect(300, 550, 600, 150);
   rect(350+ lxo, 500 +lyo, 50, 200);
 
   //body
-  stroke(17, 43, 84)
-  fill(40, 103, 201)
+  stroke(17, 43, 84);
+  fill(40, 103, 201);
   rect(300+ lxo, 450 +lyo, 250, 215, 35);
 
   //face
@@ -223,30 +237,20 @@ rect(300, 550, 600, 150);
   fill(186, 44, 0);
   triangle(300 + lxo, 90 + lyo, 215 + lxo, 250 + lyo, 385 + lxo, 250 + lyo);
 
-if (lyo > -70) {
-  lyo += -10;
-} else {
-  lyo += 10
+//sunglasses
+if (mouseX > 200 && mouseX < 350){
+  if (mouseY > 200 && mouseY < 350) {
+push();
+stroke(0);
+fill(0);
+strokeWeight(10);
+line(250 + lxo , 290 + lyo, 350 + lxo, 290 + lyo);
+rect(260 + lxo, 300 + lyo, 45, 35, 2, 2, 30, 30);
+rect(340 + lxo, 300 + lyo, 45, 35, 2, 2, 30, 30);
+pop();
+  }
 }
 
-
-// push();
-// translate(300, 300);
-// let angle = frameCount * .1;
-// rotate(angle);
-
-// // petals
-// fill(random(255), random(255),random(255));
-// noStroke();
-
-// ellipse(0 ,0 , 50, 25);
-// ellipse(0 ,0 , 25, 50);
-
-// //flower center
-// fill(247, 230, 42);
-// stroke(230, 149, 44);
-// ellipse(0, 0, 20, 20);
-// pop();
 
 }
 
