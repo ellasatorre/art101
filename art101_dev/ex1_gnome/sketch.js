@@ -261,12 +261,7 @@ if (mouseIsPressed){
 
 } } }
 
-//flower on ground
-noStroke();
-ellipse(75, 525, 40, 20);
-ellipse(75, 525, 20, 40);
-fill(247, 230, 42);
-ellipse(75, 525, 15, 15);
+
 
 
 
