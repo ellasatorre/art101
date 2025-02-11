@@ -259,9 +259,17 @@ if (mouseIsPressed){
   fill(random(255), random(255), random(255), 90);
   rect(300, 300, innerWidth, height);
 
-}
-}
-}
+} } }
+
+//flower on ground
+noStroke();
+ellipse(75, 525, 40, 20);
+ellipse(75, 525, 20, 40);
+fill(247, 230, 42);
+ellipse(75, 525, 15, 15);
+
+
+
 
 }
 
