@@ -29,7 +29,7 @@ function draw() {
   background(200, 250, 255);
 
   image(bgseal, 0, 0, width, height);
-  image(seal1, 100, 100, mouseX, mouseY);
+  image(seal1, 100, 100, mouseX*2, mouseY*2);
   
   for (let i = 0; i < 300; i++) {
 
