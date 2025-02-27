@@ -32,6 +32,7 @@ function setup() {
     cimg = pufferfish;
     tool = "";
     mark = 0;
+    frameRate(24);
 }
 
 
