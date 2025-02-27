@@ -5,8 +5,8 @@ let cx,xy;
 let bgc;
 let gridSize;
 let imgSize;
-let pizza;
-let pineapple;
+let pufferfish;
+let goldfish;
 let cimg;
 let k;
 let tool;
@@ -16,18 +16,18 @@ function setup() {
     createCanvas(1000, 1000);
     background(2, 27, 115);
     smooth();
-    bgc = color(255);
-    k = color(255,0,0);
+    bgc = color(2, 27, 115);
+    k = color(40, 88, 176);
     // set up a assets folder then add an image.
-    pizza = loadImage("assets/pizza.png");
-    pineapple = loadImage("assets/pineapple.png");
+    pufferfish = loadImage("assets/pufferfish.png");
+    goldfish = loadImage("assets/goldfish.png");
     cx = width/2;
     cy = height/2;
     gridSize = 40;
     imgSize = 40;
     textSize(40);
     sWeight = 2;
-    cimg = pizza;
+    cimg = pufferfish;
     tool = "";
     mark = 0;
 }
@@ -44,111 +44,14 @@ function draw() {
     }
 }
 
-
-function stampChoice() {
- 
-// key global variable contains whatever key was last pressed
-let currentkey = key;
-
-switch(currentkey) {
-
-case 'a':
-  console.log("a left");  // left
-  cx+= -gridSize; 
-  mark = 1;
-  break;
-case 'w':
-  console.log("w up");  // up
-  cy+= -gridSize;  
-  mark = 1;
-  break;
-case 'd':
-  console.log("d  right");  //right
-  cx+= gridSize;
-  mark = 1;
-  break;
-case 's':
-  console.log("s back");  // back
-  cy+= gridSize;
-  mark = 1;
-  break;
-case '1':
-  console.log("1 - pizza");  // first img
-  cimg = pizza;
-  tool = "pix";
-  break;
-case '2':
-  console.log("2 - pineapple");   // second img
-  cimg = pineapple;  // replace with your own images
-  tool = "pix";
-  break;
-case 'c':
-  console.log("c - circ");   //circle/ellipse
-  tool = "circ";
-  break;
-case 'r':
-  console.log("r - rect");   //rectangle
-  tool = "rect";
-  break;
-case 'b':
-  console.log("b - erase");  // erase with bg color
-  tool = "erase";
-  break;
-  case 'z':
-  console.log("z - splat");  // splatter
-  tool = "splat";
-  break;
-case '>':
-  console.log("+"); 
-  imgSize+=10;
-  break;
-case '<':
-  console.log("-"); 
-  imgSize-=10;
-  break;
-default:             // Default executes if the case labels
-  console.log("None");   // don't match the switch parameter
-  break;
-}
-
-if (mark == 1) {
-  if (tool == "pix"  )  {
-    stampImage(cimg,cx,cy,imgSize); 
-  } else if (tool == "circ") {
-    drawCircle( k, cx,cy, imgSize, imgSize);
-  } else if (tool == "rect"){
-    drawRect( k, cx,cy, imgSize, imgSize)
-  } else if (tool == "erase"){
-    eraser(bgc,cx,cy,imgSize);
-  } else if (tool == "splat"){
-  sdTurboSpatter(k,cx,cy,imgSize, imgSize);
-  }else {
-    // do nothing
-  }
-mark=0;  // resets the option if we make a mark or not
-}
-
-
-if (key == 'x' || key == 'X') {
-  background(bgc);
-}
-
-// if (key == 'p' ) {
-//  saveFrames('image-0', 'png', 1, 1);
-//   key = '';  // resets the key so it does not make more than one image.
-// }
-
-key = '';  // resets the key so it does not make more than one image.
-
-}
-
 function drawChoice() {
+
   let currentkey = key;
 
 switch(currentkey) {
 case '1':
   console.log("1");  // black line
- // let k = color(0);
+  let k = color(0);
   drawline(color(0), mouseX, mouseY, pmouseX, pmouseY);
   break;
 case '2':
@@ -202,6 +105,105 @@ default:             // Default executes if the case labels
   break;
 }
 }
+
+function stampChoice() {
+ 
+// key global variable contains whatever key was last pressed
+let currentkey = key;
+
+switch(currentkey) {
+
+case 'a':
+  console.log("a left");  // left
+  cx+= -gridSize; 
+  mark = 1;
+  break;
+case 'w':
+  console.log("w up");  // up
+  cy+= -gridSize;  
+  mark = 1;
+  break;
+case 'd':
+  console.log("d  right");  //right
+  cx+= gridSize;
+  mark = 1;
+  break;
+case 's':
+  console.log("s back");  // back
+  cy+= gridSize;
+  mark = 1;
+  break;
+case 'v':
+  console.log("v - pufferfish");  // first img
+  cimg = pufferfish;
+  tool = "pix";
+  break;
+case 'b':
+  console.log("b - goldfish");   // second img
+  cimg = goldfish;  // replace with your own images
+  tool = "pix";
+  break;
+case 'c':
+  console.log("c - circ");   //circle/ellipse
+  tool = "circ";
+  break;
+// case 'r':
+//   console.log("r - rect");   //rectangle
+//   tool = "rect";
+//   break;
+// case 'e':
+//   console.log("e - erase");  // erase with bg color
+//   tool = "erase";
+//   break;
+  case 'z':
+  console.log("z - splat");  // splatter
+  tool = "splat";
+  break;
+case '>':
+  console.log("+"); 
+  imgSize+=10;
+  break;
+case '<':
+  console.log("-"); 
+  imgSize-=10;
+  break;
+default:             // Default executes if the case labels
+  console.log("None");   // don't match the switch parameter
+  break;
+}
+
+if (mark == 1) {
+  if (tool == "pix"  )  {
+    stampImage(cimg,cx,cy,imgSize); 
+  } else if (tool == "circ") {
+    drawCircle( k, cx,cy, imgSize, imgSize);
+  } else if (tool == "rect"){
+    drawRect( k, cx,cy, imgSize, imgSize)
+  } else if (tool == "erase"){
+    eraser(bgc,cx,cy,imgSize);
+  } else if (tool == "splat"){
+  sdTurboSpatter(k,cx,cy,imgSize, imgSize);
+  }else {
+    // do nothing
+  }
+mark=0;  // resets the option if we make a mark or not
+}
+
+
+if (key == 'x' || key == 'X') {
+  background(bgc);
+}
+
+if (key == 'p' ) {
+ saveFrames('image-0', 'png', 1, 1);
+  key = '';  // resets the key so it does not make more than one image.
+}
+
+key = '';  // resets the key so it does not make more than one image.
+
+}
+
+
 
 function stampImage(pix,lx,ly,s)  {
   // cheap centering trick with the s var /2

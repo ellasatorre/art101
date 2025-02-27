@@ -42,14 +42,6 @@ function setup() {
 }
 
 
-// function keyPressed(){
-//   if (t == 0) { 
-//     t = 255;
-//     } else { 
-//     t = 0;
-//     }
-// tint(t, 0, 0);
-//   }
 
 
 function draw() {
@@ -150,7 +142,7 @@ case 's':
 case 't':
     console.log("t text");  // text
     fill(0);
-    text("I <3 SEALS",cx,cy,200);
+    text("I <3 SEALS",cx,cy,400);
     break;
 default:             // Default executes if the case labels
   console.log("None");   // don't match the switch parameter
