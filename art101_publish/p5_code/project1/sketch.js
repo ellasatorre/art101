@@ -3,6 +3,7 @@ let currentkey = '1';
 let gkcount;
 let cx,xy;
 let bgc;
+let c = 0;
 let gridSize;
 let imgSize;
 let pufferfish;
@@ -12,6 +13,7 @@ let k;
 let tool;
 let mark;
 let seal;
+let sealhat;
 
 function setup() {
     createCanvas(1000, 1000);
@@ -19,10 +21,12 @@ function setup() {
     smooth();
     bgc = color(0, 34, 112);
     k = color(40, 88, 176);
-    // set up a assets folder then add an image.
+
+
     pufferfish = loadImage("assets/pufferfish.png");
     goldfish = loadImage("assets/goldfish.png");
     seal = loadImage("assets/whiteseal.png");
+    sealhat = loadImage("assets/sealhat.png");
     cx = width/2;
     cy = height/2;
     gridSize = 75;
@@ -32,7 +36,8 @@ function setup() {
     cimg = pufferfish;
     tool = "";
     mark = 0;
-    frameRate(24);
+
+
 }
 
 
@@ -48,8 +53,9 @@ function draw() {
 }
 
 function drawChoice() {
-
+  cvalue = color (random(150, 255), random(100), 100, 40);
   let currentkey = key;
+  imageMode(CENTER);
 
 switch(currentkey) {
 
@@ -74,9 +80,21 @@ break;
   spikey(color(30, random(30,150), random(100, 130),200),mouseX, mouseY, pmouseX, pmouseY);
   break;
 case '6':
-  console.log("6");6
-  sealfriend(seal, mouseX, mouseY, 100, 100);
+  console.log("6 hue " + c);
+  colorMode(HSB);
+  ellaRainbow(color(c, 50, 75), mouseX, mouseY);
+  c++;
+  c = c%360;
+  colorMode(RGB);
   break;
+  case '7':
+  console.log("7");
+  sealfriend(seal, mouseX, mouseY, imgSize, imgSize);
+  break;
+  case '8':
+    console.log("8");
+    sealfriend(sealhat, mouseX, mouseY, 100, imgSize);
+    break;
  case 'e':
   console.log("e");  // erase with bg color
   eraser(bgc,mouseX, mouseY,35);
@@ -86,6 +104,7 @@ default:             // Default executes if the case labels
   console.log("None");   // don't match the switch parameter
   break;
 }
+
 }
 
 function stampChoice() {
@@ -96,22 +115,22 @@ let currentkey = key;
 switch(currentkey) {
 
 case 'a':
-  console.log("a left");  // left
+  console.log("a left " + cx + " " + cy);  // left
   cx+= -gridSize; 
   mark = 1;
   break;
 case 'w':
-  console.log("w up");  // up
+  console.log("w up " + cx + " " + cy);  // up
   cy+= -gridSize;  
   mark = 1;
   break;
 case 'd':
-  console.log("d  right");  //right
+  console.log("d  right " + cx + " " + cy);  //right
   cx+= gridSize;
   mark = 1;
   break;
 case 's':
-  console.log("s back");  // back
+  console.log("s back " + cx + " " + cy);  // back
   cy+= gridSize;
   mark = 1;
   break;
@@ -134,11 +153,11 @@ case 'z':
   tool = "splat";
   break;
 case '>':
-  console.log("+"); 
+  console.log("+ " + imgSize); 
   imgSize+=10;
   break;
 case '<':
-  console.log("-"); 
+  console.log("- " + imgSize); 
   imgSize-=10;
   break;
 default:             // Default executes if the case labels
@@ -178,8 +197,8 @@ if (key == 'p' ) {
 
 
 function stampImage(pix,lx,ly,s)  {
-  // cheap centering trick with the s var /2
-  image(pix,lx-(s/2),ly-(s/2),s,s);
+  imageMode(CENTER);
+  image(pix,lx,ly,s,s);
 }
 
 function drawCircle( k,  lx, ly,  w, h) {
@@ -235,7 +254,6 @@ function ellaSuperBrush( k,  lx, ly,  px, py){
 }
 
 function ellaSuperSplatter(k, lx, ly){
-
   let r = random(20);
   fill(k);
   stroke(k);
@@ -257,6 +275,20 @@ function spikey (k, lx, ly, px, py){
   line(lx, ly, px, py);
   line(lx + xr, ly + yr, px, py);
 
+}
+
+function ellaRainbow(k, lx, ly){
+  let r = random(20);
+  fill(k);
+  noStroke();
+
+  for (let i = 0; i < r; i++) {  
+    let lr = random(5,20);
+    let sr = random(-70, 70);
+    let rr = random(-70, 70);
+  ellipse(lx + sr, ly + rr, lr, lr);
+    
+  }
 }
 
 function sealfriend (cimg,cx,cy,imgSize){

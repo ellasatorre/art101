@@ -24,10 +24,8 @@ function keyPressed(){
   if (key == 'b' || key == 'B'){ 
   if (cvalue == 0) {
     cvalue = 255;
-
   } else {
     cvalue = 0;
-
   } 
   }
 
