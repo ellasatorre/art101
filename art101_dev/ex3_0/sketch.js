@@ -1,5 +1,7 @@
 let bgc;
 let cloud;
+let speedx, speedy, lox, loy;
+let counter = 1;
 
 function preload(){
   cloud = loadImage("assets/cloud.png");
@@ -14,17 +16,36 @@ function setup() {
   rectMode(CENTER);
   imageMode(CENTER);
   noStroke();
+  speedx = random(-2, 2);
+  speedy = random(-2, 2);
+  lox = height / 2;
+  loy = width / 2;
 }
 
 function draw() {
   background(bgc);
 
+  if ((loy < 0) || (loy > height)) {
+    speedy = -speedy;
+}
+if ((lox < 0) || (lox > height)) {
+  speedx = -speedx;
+}
+
+lox += speedx;
+loy += speedy;
+
+clouds(lox, loy, 0, 4);
+
+counter ++;
+
   let c = color(115, 107, 100);
-  let angle = frameCount/10;
+  let angle = frameCount/50;
+  angle = angle%2;
 
 
-  bunnyHead(c, width/2, height/2,angle,1.5);
-  clouds(100, 100);
+  bunnyHead(c, width/2, height/2,angle*-90,angle);
+
 }
 
 function bunnyHead(c,lyo,lxo,rot,sc){
