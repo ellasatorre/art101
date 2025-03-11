@@ -35,7 +35,7 @@ function setup() {
 
 }
 function draw() {
-
+ 
   background(70);
   // makes a frame
   fill(250);

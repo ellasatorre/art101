@@ -44,7 +44,10 @@ counter ++;
   angle = angle%2;
 
 
-  bunnyHead(c, width/2, height/2,angle*-90,angle);
+  bunnyHead(c, width/4, height/4,angle*-90,angle);
+
+  c = color(74);
+  bunnyHeadHat(c, 500, 500, angle*180, angle);
 
 }
 
@@ -65,6 +68,29 @@ fill(c);
   bunnyNose(0, 15);
   pop();
 }
+
+function bunnyHeadHat(c,lyo,lxo,rot,sc){
+  push();
+translate(lyo, lxo);
+rotate(rot);
+scale(sc);
+fill(c);
+
+  
+
+  bunnyEars(c, -60, -65, -10);
+  bunnyEars(c, 60, -65, 10);
+  ellipse(0,0,190,165);
+
+  bunnyHat(0, -75)
+
+  bunnyEyes(-50, 10);
+  bunnyEyes(50, 10);
+
+  bunnyNose(0, 15);
+  pop();
+}
+
 
 function bunnyEars(c,lyo,lxo,rot,sc){
   push();
@@ -95,6 +121,17 @@ rotate(rot);
 scale(sc);
   fill(252, 162, 207);
   ellipse(0, 0, 15, 10);
+pop();
+}
+
+function bunnyHat(lyo, lxo, rot, sc){
+push();
+fill(0);
+translate(lyo, lxo);
+rotate(rot);
+scale(sc);
+rect(0,-40, 75, 100);
+rect(0, 0, 110, 20);
 pop();
 }
 
