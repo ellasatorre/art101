@@ -7,7 +7,7 @@ let peace;
 function setup() {
   createCanvas(700,700);
 
-  ufos = new Array(75);
+  ufos = new Array(70);
 
   for (let i = 0; i < ufos.length; i++) {
 
