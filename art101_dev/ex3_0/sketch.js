@@ -2,7 +2,9 @@ let bgc;
 let cloud;
 let speedx, speedy, lox, loy;
 let lx, ly, sx, sy;
+let lx2, ly2, sx2, sy2;
 let counter = 1;
+
 
 
 function preload(){
@@ -20,10 +22,14 @@ function setup() {
   noStroke();
   sx=random(-10, 10);
   sy= random(-10, 10);
+  sx2=random(-5, 5);
+  sy2= random(-5, 5);
   speedx = random(-2, 2);
   speedy = random(-2, 2);
   ly = 100;
   lx = 100;
+  ly2 = 300;
+  lx2 = 300;
   lox = height / 2;
   loy = width / 2;
   
@@ -67,6 +73,17 @@ loy += speedy;
     lx += sx;
 
 
+    ly2 += sy2;
+    lx2 += sx2;
+
+      if ((ly2 < 0) || (ly2 > height-175)) {
+
+    sy2 = -sy2;
+}
+if ((lx2 < 0) || (lx2 > width - 175)) {
+  sx2 = -sx2;
+}
+
 
 
   clouds(lox, loy, 0, 4);
@@ -80,6 +97,8 @@ loy += speedy;
   c = color(74);
    esbunnyHeadHat(c, 500, 500, angle*-90, angle);
 
+
+   cvMan(color(250, 200,0), color(0, 200, 0), color(100, 200, 100),lx2,ly2,0,.75);
 }
 
 
@@ -211,4 +230,85 @@ image(cloud, 75, -75, 100, 50);
 image(cloud, -75, 75, 100, 50);
 
 pop();
+}
+
+
+function cvMan(c,tc,tp,lx,ly,rot,sc){
+  push();
+    translate(lx,ly);
+    rotate(rot);
+    scale(sc);
+    head(c,-2,0);
+    cvAwesomeFace(c,71,-15,.27);
+    torso(tc,0,0);
+    limb(c,170,65); //arms
+    limb(c,35,65);
+    limb(tp,80,160); //legs
+    limb(tp,125,160);
+  pop();
+}
+//------------------------------------------ body parts
+function limb(c,lx,ly){
+  push();
+  fill(c);
+  translate(lx,ly);
+  rect(0,0,45,95,5);
+  pop();
+}
+function head(c,lx,ly){
+  push();
+  fill(c);
+  translate(lx,ly)
+  rect(100,-10,55,55,10);
+  cvAwesomeFace(c,50,-60,.27)
+  pop();
+  }
+function torso(c,lx,ly){
+  push();
+  fill(c);
+  translate(lx,ly);
+  noStroke();
+  rect(100,65,90,95,5);
+  pop();
+}
+function curnty(c,lx,ly){
+  push();
+  noStroke();
+  fill(c);
+  translate(lx,ly);
+  rect(80,65,90,95,5);
+  pop();
+  // ----------------- start woman parts
+  fill(bc);
+  push();
+  noStroke();
+  triangle(80,90,80,150,95,120);
+  triangle(170,90,170,150,155,120);
+  pop();
+}
+function cvAwesomeFace(c,lx,ly,sc) {
+  push();
+  translate(lx,ly);
+  scale(sc);
+    //eyebrows
+    fill(0); //top
+    stroke(0);
+    strokeWeight(4);
+    ellipse(222,135,27,35);
+    ellipse(178,135,27,35);
+    fill(c); //yellow layer
+    stroke(c);
+    ellipse(222,141,35,37);
+    ellipse(178,141,35,37);
+    //features
+    fill("white");
+    stroke(0);
+    ellipse(222,155,33,50); //eyes
+    ellipse(178,155,33,50);
+    quad(155,230,245,230,205,280,195,280); //teeth
+    fill("black");
+    ellipse(220,148,25,33); //puipls
+    ellipse(176,148,25,33);
+    quad(163,238,237,238,205,280,195,280); //mouth  
+  pop();
 }

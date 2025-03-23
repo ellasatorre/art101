@@ -58,6 +58,9 @@ updateBunny(){
       this.lyo = height;
     }
 
+
+
+
     } 
       
 bunnyBody(c,lxo,lyo,rot,sc){
@@ -127,4 +130,23 @@ bunnyNose(lxo,lyo,rot,sc){
         ellipse(0, 0, 15, 10);
       pop();
       }
+
+  bunnyMad(){
+    this.c = color(150,0,0);
+    this.sx= random(-50,50);
+    this.sy= random(-50,50);
+  }
+
+  bunnySad(){
+    this.c = color(77, 158, 201);
+    this.sx= random(-1,1);
+    this.sy= random(-1,1);
+  }
+
+  bunnyHappy(){
+    this. c = color(random(115, 200), random(115,200), random(115, 200));
+    this.sx= random(-10,10);
+    this.sy= random(-10,10);
+  }
+
 }
