@@ -1,5 +1,8 @@
 
 
+let recMode = false;
+let can;
+
 // center point
 let centerX = 0.0, centerY = 0.0;
 
@@ -18,8 +21,10 @@ let b = 0;
 let nextxArr = [100, 400, 200,350];
 let nextyArr = [60, 200, 100, 150];
 
+
+
 //corner nodes
-let nodes = 5;
+let nodes = 6;
 
 //zero fill arrays
 let nodeStartX = [];
@@ -33,7 +38,7 @@ let frequency = [];
 let organicConstant = 1.0;
 
 function setup() {
-  createCanvas(710, 400);
+ can = createCanvas(710, 400);
 
   //center shape in window
   centerX = width / 2;
@@ -65,7 +70,7 @@ function draw() {
 
   console.log(frameCount);
   //fade background
-  fill(0, 100);
+  fill(255, 100);
   rect(0, 0, width, height);
   drawShape();
   moveShape();
@@ -89,6 +94,36 @@ function draw() {
   }
   // counterx += .5;
   // countery += .1;
+
+  recordit();
+}
+
+function keyPressed() {
+
+  if (keyIsPressed === true) {
+      let k = key;
+      console.log("k is " + k);
+
+      if (k == 's' || k == 'S') {
+          console.log("Stopped Recording");
+          recMode = false;
+          noLoop();
+      }
+
+      if (k == ' ') {
+          console.log("Start Recording");
+          recMode = true;
+          loop();
+      }
+  }
+}
+
+function recordit() {  // new version
+  if (recMode == true) {
+      let ext = nf(frameCount, 4);
+      saveCanvas(can, 'frame-' + ext, 'jpg');
+      console.log("rec " + ext);
+  }
 }
 
 function drawShape() {
