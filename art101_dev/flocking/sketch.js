@@ -9,14 +9,14 @@ function setup() {
 
   flock = new Flock();
   // Add an initial set of boids into the system
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 5; i++) {
     let b = new Boid(width / 2,height / 2);
     flock.addBoid(b);
   }
 }
 
 function draw() {
-  background(51);
+  background(20);
   flock.run();
 }
 
@@ -56,7 +56,7 @@ Flock.prototype.addBoid = function(b) {
 
 function Boid(x, y) {
   this.acceleration = createVector(0, 0);
-  this.velocity = createVector(random(-1, 1), random(-1, 1));
+  this.velocity = createVector(random(-10, 5), random(-1, 1));
   this.position = createVector(x, y);
   this.r = 3.0;
   this.maxspeed = 7;    // Maximum speed
