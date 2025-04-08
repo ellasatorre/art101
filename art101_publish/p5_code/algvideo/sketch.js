@@ -82,7 +82,7 @@ setupSpiro();
   }
 
   noStroke();
-  frameRate(12);
+  frameRate(24);
 
   counterx = nextxArr[0];
   countery = nextyArr[0];
@@ -493,7 +493,8 @@ function drawSpiro() {
     // rect(0, 0, radius * 2, radius * 2); // if we're simulating, draw the sine
     push(); // go up one level
     translate(0, radius); // move to sine edge
-    ellipse(0, 0, 10, 50); // draw a little circle
+    drawSB();
+    ellipse(0, 0, 10, 20); // draw a little circle
     pop(); // go down one level
     translate(0, radius); // move into position for next sine
     sines[i] = (sines[i] + (fund + (fund * i * ratio))) % TWO_PI; // update angle based on fundamental
