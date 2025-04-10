@@ -88,7 +88,7 @@ wiggles = new wiggle();
   }
 
   noStroke();
-  frameRate(2);
+  frameRate(24);
 
   counterx = nextxArr[0];
   countery = nextyArr[0];

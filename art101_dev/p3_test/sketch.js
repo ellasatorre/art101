@@ -22,6 +22,8 @@ function setup() {
   for (let i = 0; i < twoDarr.length; i++) {
     fill(twoDarr[i][0]*25,twoDarr[i][1]*25,twoDarr[i][2]*25);
     rect(i*25,0,20,20);
+
+    rect(i*25+150,300,20,-twoDarr[i][2]*25);
     
   }
 }
