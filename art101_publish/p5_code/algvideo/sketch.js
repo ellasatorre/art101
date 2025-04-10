@@ -1,7 +1,11 @@
 
-
+let jelly;
 let recMode = false;
 let can;
+let wiggles;
+
+let zoom = 1;
+let pan = 1;
 
 // center point
 let centerX = 0.0, centerY = 0.0;
@@ -63,6 +67,8 @@ function setup() {
  can = createCanvas(1920 , 1080);
 setupFlock();
 setupSpiro();
+jelly = loadImage('jelly.png');
+wiggles = new wiggle();
   //center shape in window
   centerX = width / 2;
   centerY = height / 2;
@@ -82,7 +88,7 @@ setupSpiro();
   }
 
   noStroke();
-  frameRate(24);
+  frameRate(2);
 
   counterx = nextxArr[0];
   countery = nextyArr[0];
@@ -95,47 +101,79 @@ function draw() {
 
   if (frameCount < 400){
 
-    background(0, 41, 122, 100)
+    background(0, 41, 122, 10)
+    push()
+    scale(zoom+=.005);
+    translate(pan+=2,0);
+    flock.run();
     fs = fv[0];
     fs1 = fv1[0];
     spx = spirox[0];
     spy = spiroy[0];
     counterx = nextxArr[0];
     countery = nextyArr[0];
+    wiggles.display();
+    wiggles.update();
+    drawSpiro();
+    pop()
 
   }else if(frameCount < 800){
-
-    background(110, 233, 255, 100)
+push();
+scale(1.3);
+translate(pan-=2,0);
+    background(110, 233, 255, 50)
+    flock.run();
     fs = fv[1];
     fs1 = fv1[1];
     spx = spirox[1];
     spy = spiroy[1];
+    flock.run();
+    drawSpiro();
     counterx = nextxArr[1];
     countery = nextyArr[1];
-
+    
+pop();
   } else if (frameCount < 1000){
-
-    background(99, 51, 255, 100)
+push();
+scale(1.5);
+translate(pan-=2, pan+=1);
+    background(99, 51, 255, 50)
+    flock.run();
     fs = fv[2];
     fs1 = fv1[2];
     spx = spirox[2];
     spy = spiroy[2];
     counterx = nextxArr[2];
     countery = nextyArr[2];
+    push()
+    translate(1000,200);
+    wiggles.display();
+    wiggles.update();
+    pop()
+    drawSB();
+    pop();
   } else {
 
-    background(255, 38, 107,100)
+    push();
+    scale(.9);
+// translate();
+    background(255, 38, 107,50)
+    flock.run();
     fs = fv[3];
     fs1 = fv1[3];
     spx = spirox[3];
     spy = spiroy[3];
     counterx = nextxArr[3];
     countery = nextyArr[3];
+    drawSpiro();
+    drawSB();
+    push()
+    translate(500,500);
+    wiggles.display();
+    wiggles.update();
+    pop();
+    pop();
   }
-
-  drawSpiro();
-  flock.run();
-  drawSB();
   
   recordit();
 }
@@ -251,8 +289,6 @@ function moveShape() {
 
 
 function setupFlock() {
-  // createCanvas(1920, 1080);
-  // createP("Drag the mouse to generate new boids.");
 
   flock = new Flock();
   // Add an initial set of boids into the system
@@ -324,7 +360,7 @@ Boid.prototype.flock = function(boids) {
   let ali = this.align(boids);      // Alignment
   let coh = this.cohesion(boids);   // Cohesion
   // Arbitrarily weight these forces
-  sep.mult(1.5);
+  sep.mult(10);
   ali.mult(1.0);
   coh.mult(1.0);
   // Add the force vectors to acceleration
@@ -360,15 +396,16 @@ Boid.prototype.seek = function(target) {
 Boid.prototype.render = function() {
   // Draw a triangle rotated in the direction of velocity
   let theta = this.velocity.heading() + radians(90);
-  fill(random(100,255), random(10,100), random(100,200));
+  // fill(random(100,255), random(10,100), random(100,200));
+  noFill();
   stroke(200);
   push();
   translate(this.position.x, this.position.y);
   rotate(theta);
-  beginShape();
-  vertex(0, -this.r * 2);
-  vertex(-this.r, this.r * 2);
-  vertex(this.r, this.r * 2);
+
+image(jelly,0 ,0, 30, 30);
+
+
   endShape(CLOSE);
   pop();
 }
@@ -384,7 +421,7 @@ Boid.prototype.borders = function() {
 // Separation
 // Method checks for nearby boids and steers away
 Boid.prototype.separate = function(boids) {
-  let desiredseparation = 25.0;
+  let desiredseparation = 30.0;
   let steer = createVector(0, 0);
   let count = 0;
   // For every boid in the system, check if it's too close
@@ -494,6 +531,7 @@ function drawSpiro() {
     push(); // go up one level
     translate(0, radius); // move to sine edge
     drawSB();
+    // image(jelly, 0, 0, 20, 20);
     ellipse(0, 0, 10, 20); // draw a little circle
     pop(); // go down one level
     translate(0, radius); // move into position for next sine
