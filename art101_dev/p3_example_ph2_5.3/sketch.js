@@ -71,8 +71,6 @@ function setup() {
 function draw() {
     background(40,90);
 
-
-
     if (currentPage == 0) {   // intro and title
       
         push();
