@@ -32,18 +32,18 @@ background(bgc);
 
 
 
- if (h > 16 || h < 7 ) {  // sunset and sunrise
+ if (h > 19 || h < 7 ) {  // sunset and sunrise
       // nightime
       fill(200);
       ellipse(100,100,100,100);
-     bgc = color(20,20,255);
+     bgc = color(20,20,255,100);
      shc = color(200);
      //sundown
  } else {
      //daytime
      fill(255,200,0);
      ellipse(100,100,400,400);
-     bgc = color(255,231,150);
+     bgc = color(255,231,150,100);
      shc = color(20);
  }
 

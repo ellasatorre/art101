@@ -34,39 +34,39 @@ console.log("sec " + s);
  let mm = map(m,0,59,0,360);
  let ms = map(s,0,59,0,360);
 
- push();
- translate(width/2,height/2);
- rotate(mh-90);
- noStroke();
- fill(20);
- ellipse(0,0,80,80);
- fill(90,100,0);
- rect(0,0,200,10,5);
- stroke(200,100,0);
- pop();
+//  push();
+//  translate(width/2,height/2);
+//  rotate(mh-90);
+//  noStroke();
+//  fill(20);
+//  ellipse(0,0,80,80);
+//  fill(90,100,0);
+//  rect(0,0,200,10,5);
+//  stroke(200,100,0);
+//  pop();
 
- push();
- translate(width/2,height/2);
- rotate(mm-90);
- noStroke();
- fill(90,0,0);
- rect(0,0,200,10,5);
- stroke(200,100,0);
- pop();
+//  push();
+//  translate(width/2,height/2);
+//  rotate(mm-90);
+//  noStroke();
+//  fill(90,0,0);
+//  rect(0,0,200,10,5);
+//  stroke(200,100,0);
+//  pop();
 
- push();
+//  push();
 
- translate(width/2,height/2);
- rotate(ms-90);
- noStroke();
- fill(200,0,0);
- rect(0,0,200,10,5);
- stroke(200,100,0);
- line(0,0,0,25);
-translate(200,0);
-line(0,0,0,25);
+//  translate(width/2,height/2);
+//  rotate(ms-90);
+//  noStroke();
+//  fill(200,0,0);
+//  rect(0,0,200,10,5);
+//  stroke(200,100,0);
+//  line(0,0,0,25);
+// translate(200,0);
+// line(0,0,0,25);
 
- pop();
+//  pop();
 
  text( h, 0, 0);
 text(m, width/2+50, height/2);
