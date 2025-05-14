@@ -1,26 +1,27 @@
 
 // This contains the use of both the Sounds and Scenemanager libraries
 
-let wood, snd1;
-let opi;
+let boss, sax, doom, elevator, fart;
 
 function preload() {
-  snd1 = loadSound("assets/beat.mp3");
-  wood = loadSound("assets/wood.mp3");
-  opi = loadImage("assets/octo.png");
+
+    boss = loadSound("assets/sound_boss.mp3");
+    sax = loadSound("assets/sound_carelesswhispers.mp3");
+    doom = loadSound("assets/sound_doom.mp3");
+    elevator = loadSound("assets/sound_elevator.mp3");
+    fart = loadSound("assets/sound_fart.mp3");
+//   snd1 = loadSound("assets/beat.mp3");
+//   wood = loadSound("assets/wood.mp3");
+//   opi = loadImage("assets/octo.png");
 
 }
-
-
-// define your p5.play sprites as global objects first.
-var ghosty;
 
 
 // global manager object
 var mgr;
 
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(1000, 1000);
   //  console.log(hell);
 
      mgr = new SceneManager();
@@ -72,13 +73,7 @@ function keyPressed()
         case '3':
             mgr.showScene( scene3 );
             break;
-        case 'h':
-            mgr.showScene( scene3 );
-            break;
-        case 'H':
-            mgr.showScene( scene3 );
-            break;
-         case 'e':
+         case '4':
             mgr.showScene( theend );
             break;
     }
